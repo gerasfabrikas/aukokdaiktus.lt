@@ -1,2 +1,4 @@
-uploads/*
+uploads/needs/*
+uploads/thumbs/*
+uploads/users/*
 config/config.private.php
