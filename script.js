@@ -1,11 +1,14 @@
 $(document).ready(function(){
 
 	var valueSelected0 = $('select[name="user_region"]').val();
-	$.post( "/ajax.php", { getRegionChild: valueSelected0})
-	  .done(function( data ) {
-		$('select[name="user_city"]').html(data);
-		$('select[name="user_city"]').trigger("chosen:updated");
-	});
+	if (undefined !== valueSelected0) {
+		$.post( "/ajax.php", { getRegionChild: valueSelected0})
+			.done(function( data ) {
+				$('select[name="user_city"]').html(data);
+				$('select[name="user_city"]').trigger("chosen:updated");
+		});
+	}
+
 	
     $('select[name="user_region"]').on('change', function (e) {
 		var optionSelected = $("option:selected", this);
@@ -17,7 +20,9 @@ $(document).ready(function(){
 		});
 	});
 	
-	if (navigator.userAgent.indexOf("MSIE 10") > -1) {document.body.classList.add("ie10");}
+	if (navigator.userAgent.indexOf("MSIE 10") > -1) {
+		document.body.classList.add("ie10");
+	}
 	
 	$('.slickSelect').chosen({no_results_text: "Nerasta"}); 
 	
@@ -27,10 +32,11 @@ $(document).ready(function(){
 		$('#push').height(wind-docm);
 	}
 	
-	var module = document.getElementById("clamp1");
-	$clamp(module, {clamp: 3});
-	module = document.getElementById("clamp2");
-	$clamp(module, {clamp: 3});
-	module = document.getElementById("clamp3");
-	$clamp(module, {clamp: 3});
+
+	if ($(document.getElementById("clamp1")).length) {
+		$clamp(document.getElementById("clamp1"), {clamp: 3});
+		$clamp(document.getElementById("clamp2"), {clamp: 3});
+		$clamp(document.getElementById("clamp3"), {clamp: 3});
+	}
+
 });
