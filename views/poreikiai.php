@@ -273,8 +273,8 @@ El. Paštas: " . htmlspecialchars($_SESSION['user_email'], ENT_QUOTES, CHARSET) 
 <br />
 <p>
 Su pagarba,<br />
-Pagalbadaiktais.lt administracija<br />
-http://pagalbadaiktais.lt<br />
+Aukokdaiktus.lt administracija<br />
+http://aukokdaiktus.lt<br />
 </p>
 ";
 			$dovanotojo_laiskas = "
@@ -293,13 +293,13 @@ http://pagalbadaiktais.lt<br />
 ".$parentrow['user_email']."<br/>
 </p>
   
-<p>Nuoširdžiai Jūsų, <br />http://pagalbadaiktais.lt kolektyvas</p>
+<p>Nuoširdžiai Jūsų, <br />http://aukokdaiktus.lt kolektyvas</p>
 <br/><br/>
  
-<p>Jūs šį laišką gavote todėl, kad interneto tinklalapyje www.pagalbadaiktais.lt išreiškėte norą padėti skurstantiems Lietuvos žmonėms, padovanodami Jums nereikalingą daiktą, ir įvedėte savo el. pašto adresą. Jei Jūs to nedarėte, vadinasi, kažkas iš Jūsų pažįstamų negražiai pajuokavo. Tokiu atveju prašome pranešti el. paštu: info@pagalbadaiktais.lt </p>
+<p>Jūs šį laišką gavote todėl, kad interneto tinklalapyje www.aukokdaiktus.lt išreiškėte norą padėti skurstantiems Lietuvos žmonėms, padovanodami Jums nereikalingą daiktą, ir įvedėte savo el. pašto adresą. Jei Jūs to nedarėte, vadinasi, kažkas iš Jūsų pažįstamų negražiai pajuokavo. Tokiu atveju prašome pranešti el. paštu: info@aukokdaiktus.lt </p>
 			";
-			if(myMail($_SESSION['user_email'], 'Pagalbadaiktais.lt dėkoja!', $dovanotojo_laiskas) 
-			   && myMail($parentrow['user_email'], 'Pagalbadaiktais.lt dovanojamas daiktas', $kuratoriaus_laiskas)){
+			if(myMail($_SESSION['user_email'], 'Aukokdaiktus.lt dėkoja!', $dovanotojo_laiskas)
+			   && myMail($parentrow['user_email'], 'Aukokdaiktus.lt dovanojamas daiktas', $kuratoriaus_laiskas)){
 				$need_full_desc = (isset($_POST['need_full_desc']) ? mysqli_real_escape_string($con, $_POST['need_full_desc']) : '');
 				updateFieldWhere('needs', 'need_full', '1', 'need_id = '.$need_id);
 				updateFieldWhere('needs', 'need_full_desc', $need_full_desc, 'need_id = '.$need_id);

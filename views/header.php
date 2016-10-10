@@ -14,7 +14,7 @@ endif;
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>pagalbadaiktais.lt</title>
+        <title>aukokdaiktus.lt</title>
 		<link rel="stylesheet" type="text/css" href="/normalize.css" />
 		<link rel="stylesheet" type="text/css" href="/style.css" />
 		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
@@ -117,7 +117,7 @@ endif;
 	<?php if(isset($_GET['pageslug']) and $_GET['pageslug'] != '' and isset($pgmenu[$father])) : ?>
 	<div class="pagebanner daiktais">
 		<div class="social">
-			<a class="fb" target="_blank" href="https://www.facebook.com/pagalbadaiktais/"><i class="fa fa-facebook"></i></a>
+			<a class="fb" target="_blank" href="https://www.facebook.com/aukoktinklas/"><i class="fa fa-facebook"></i></a>
 			<a class="tw" target="_blank" href="http://www.linkedin.com/company/pagalbadaiktais-lt"><i class="fa fa-linkedin"></i></a>
 		</div>
 		<div class="pgtitles">
@@ -145,7 +145,7 @@ endif;
 
 	<div class="pagebanner daiktais">
 		<div class="social">
-			<a class="fb" target="_blank" href="https://www.facebook.com/pagalbadaiktais/"><i class="fa fa-facebook"></i></a>
+			<a class="fb" target="_blank" href="https://www.facebook.com/aukoktinklas/"><i class="fa fa-facebook"></i></a>
 			<a class="tw" target="_blank" href="http://www.linkedin.com/company/pagalbadaiktais-lt"><i class="fa fa-linkedin"></i></a>
 		</div>
 		<div class="pgtitles">
@@ -156,7 +156,7 @@ endif;
 	<?php else : ?>
 	<div class="banner daiktais" style="background-image: url('/img/head2.jpg');">
 		<div class="social">
-			<a class="fb" target="_blank" href="https://www.facebook.com/pagalbadaiktais/"><i class="fa fa-facebook"></i></a>
+			<a class="fb" target="_blank" href="https://www.facebook.com/aukoktinklas/"><i class="fa fa-facebook"></i></a>
 			<a class="tw" target="_blank" href="http://www.linkedin.com/company/pagalbadaiktais-lt"><i class="fa fa-linkedin"></i></a>
 		</div>
 		<div class="counter">Nuo portalo veiklos pradžios padovanota <span class="cnumber"><?php echo countData('needs', 'need_full = 1 AND need_type = 2 AND deleted = 0'); ?></span> daiktų</div>

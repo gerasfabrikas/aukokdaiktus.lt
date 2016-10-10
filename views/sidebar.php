@@ -53,7 +53,7 @@ if($page_slug == 'kontaktai' or $page_slug == 'tapkg' or $page_slug == 'gauk' or
 	if(isset($_POST['code']) and (strtoupper($_POST["code"]) == $_SESSION['captcha'])) :
 		if(isset($_POST['name']) and isset($_POST['elp']) and isset($_POST['desc']) and isset($_POST['phone'])) :
 			if($_POST['name'] != '' and filter_var($_POST['elp'], FILTER_VALIDATE_EMAIL) and $_POST['desc'] != '' and $_POST['phone'] != '') :
-				if(myMail('info@pagalbadaiktais.lt', $_POST['name'].' ('.$_POST['phone'].', '.$_POST['elp'].') ('.$citiesList[$_POST['sav']].') nori '.$_POST['nor'], $_POST['desc'], $from = $_POST['elp']))
+				if(myMail('info@aukokdaiktus.lt', $_POST['name'].' ('.$_POST['phone'].', '.$_POST['elp'].') ('.$citiesList[$_POST['sav']].') nori '.$_POST['nor'], $_POST['desc'], $from = $_POST['elp']))
 				err('Jūsų žinutė išsiųsta', 'green');
 				else err('Klaida siunčiant žinutę', 'red');
 			else : $error=1; err('Užpildykite visus laukelius', 'red');
@@ -85,21 +85,21 @@ endif;
 
 if($page_slug == 'padek') : ?>
 	<div class="sid-back"><h2>Kodėl gera padėti kitiems?</h2>
-	<p>Pagalbadaiktais.lt – tai <span style="color: #fff;">gerumo tinklas visoje Lietuvoje</span>, internetinis gerų darbų ir informavimo apie juos centras.</p>
+	<p>Aukokdaiktus.lt – tai <span style="color: #fff;">gerumo tinklas visoje Lietuvoje</span>, internetinis gerų darbų ir informavimo apie juos centras.</p>
 
-	<p>Pagalbadaiktais.lt – tai interneto <span style="color: #fff;">vartai, jungiantys galinčius suteikti pagalbą</span> ir tuos, kuriems ši pagalba yra labai reikalinga.</p>
+	<p>Aukokdaiktus.lt – tai interneto <span style="color: #fff;">vartai, jungiantys galinčius suteikti pagalbą</span> ir tuos, kuriems ši pagalba yra labai reikalinga.</p>
 
-	<p>Pagalbadaiktais.lt <span style="color: #fff;">niekada neužsidaro</span>. Jis registruoja Jūsų gerus darbus 24 valandas per parą, 7 dienas per savaitę.</p>
+	<p>Aukokdaiktus.lt <span style="color: #fff;">niekada neužsidaro</span>. Jis registruoja Jūsų gerus darbus 24 valandas per parą, 7 dienas per savaitę.</p>
 
 	<p>Kasdien čia užregistruojami nauji dalyviai, kuriems labai reikalinga pagalba, kasdien čia apsilanko norintys padėti, o jau atlikę gerą darbą apsilanko ir vėl, nes <span style="color: #fff;">gera žinoti, kad gali padėti sunkiau gyvenantiems</span>.</p>
  
-	<p>Kiekvienam norinčiam pasidalinti gerumu padedant Pagalbadaiktais.lt suteikia šią galimybę!</p>
+	<p>Kiekvienam norinčiam pasidalinti gerumu padedant Aukokdaiktus.lt suteikia šią galimybę!</p>
 	</div>
 <?php
 endif;
 
 if($page_slug == 'apie') : ?>
-	<div class="sid-back"><h2>Pagalbadaiktais.lt – tai</h2>
+	<div class="sid-back"><h2>Aukokdaiktus.lt – tai</h2>
 		<p><span style="color: #fff;">įrankis</span> nevyriausybinėms organizacijoms efektyviai ieškoti savanorių pagal konkrečius poreikius;</p>
 		<p><span style="color: #fff;">iššūkis</span> valstybiniam sektoriui prisitraukti pagalbos daiktais iš atsakingų piliečių;</p>
 		<p><span style="color: #fff;">galimybė</span> sunkiau gyvenantiems žmonėms ieškoti paramos.</p>
