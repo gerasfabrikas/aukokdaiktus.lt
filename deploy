@@ -1,11 +1,7 @@
 #!/usr/bin/env bash
 git push;
 ssh aukok@gerasfabrikas.lt -p 20020 /bin/bash << EOF
-<<<<<<< HEAD
     cd www/aukokdaiktus.lt;
-=======
-    cd www/admin.aukokdaiktus.lt;
->>>>>>> be6d4d1c4dfe90e24b133050a7ff5cab3d62a39f
     git pull;
     git merge origin/develop;
     git push;
