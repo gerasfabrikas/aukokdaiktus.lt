@@ -53,7 +53,7 @@ if($page_slug == 'kontaktai' or $page_slug == 'tapkg' or $page_slug == 'gauk' or
 	if(isset($_POST['code']) and (strtoupper($_POST["code"]) == $_SESSION['captcha'])) :
 		if(isset($_POST['name']) and isset($_POST['elp']) and isset($_POST['desc']) and isset($_POST['phone'])) :
 			if($_POST['name'] != '' and filter_var($_POST['elp'], FILTER_VALIDATE_EMAIL) and $_POST['desc'] != '' and $_POST['phone'] != '') :
-				if(myMail('info@aukokdaiktus.lt', $_POST['name'].' ('.$_POST['phone'].', '.$_POST['elp'].') ('.$citiesList[$_POST['sav']].') nori '.$_POST['nor'], $_POST['desc'], $from = $_POST['elp']))
+				if(myMail(EMAIL_DEFAULT_TO, $_POST['name'].' ('.$_POST['phone'].', '.$_POST['elp'].') ('.$citiesList[$_POST['sav']].') nori '.$_POST['nor'], $_POST['desc'], $from = $_POST['elp']))
 				err('Jūsų žinutė išsiųsta', 'green');
 				else err('Klaida siunčiant žinutę', 'red');
 			else : $error=1; err('Užpildykite visus laukelius', 'red');

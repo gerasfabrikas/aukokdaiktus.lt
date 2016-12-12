@@ -521,26 +521,32 @@ function isDevelopmentEnvironment()
 	return (strpos($_SERVER['HTTP_HOST'], '.local') || strpos($_SERVER['HTTP_HOST'], '.dev'));
 }
 
-function logEmailMessage($from, $to, $subject, $message)
+function logEmailMessage($from, $to, $subject, $message, $replyTo)
 {
     global $con;
 
-	$query = sprintf(
-		"INSERT INTO `email_log` (`from`, `to`, `subject`, `message`, `created`) 
-		 VALUES ('%s', '%s', '%s', '%s', NOW())",
+    $query = sprintf(
+        "INSERT INTO `email_log` (`from`, `to`, `reply_to`, `subject`, `message`, `created`) 
+		 VALUES ('%s', '%s', '%s', '%s', '%s', NOW())",
         mysqli_real_escape_string($con, $from),
         mysqli_real_escape_string($con, $to),
-		mysqli_real_escape_string($con, $subject),
-		mysqli_real_escape_string($con, $message)
-	);
+        mysqli_real_escape_string($con, $replyTo),
+        mysqli_real_escape_string($con, $subject),
+        mysqli_real_escape_string($con, $message)
+    );
 
     return mysqli_query($con, $query);
 }
 
 // Mail
-function myMail($to, $subject, $message, $from = 'noreply@aukokdaiktus.lt', $fromName = 'aukokdaiktus.lt') {
+function myMail($to, $subject, $message, $from = '', $fromName = 'aukokdaiktus.lt') {
 
-    logEmailMessage($from, $to, $subject, $message);
+    $replyTo = $from;
+    if ($from !== EMAIL_DEFAULT_FROM) {
+        $from = EMAIL_DEFAULT_FROM;
+    }
+
+    logEmailMessage($from, $to, $subject, $message, $replyTo);
     if (isDevelopmentEnvironment()){
     	return true;
 	}
@@ -572,6 +578,7 @@ function myMail($to, $subject, $message, $from = 'noreply@aukokdaiktus.lt', $fro
     $mail->From = $from;
     $mail->FromName = $fromName;
     $mail->AddAddress($to);
+    $mail->AddReplyTo($replyTo);
     $mail->Subject = $subject;
 
     // Sender - Must be set, because it is required as security flag or so..
