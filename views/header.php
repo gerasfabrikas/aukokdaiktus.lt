@@ -16,7 +16,7 @@ endif;
         <meta charset="utf-8">
         <title>aukokdaiktus.lt</title>
 		<link rel="stylesheet" type="text/css" href="/normalize.css" />
-		<link rel="stylesheet" type="text/css" href="/style.css" />
+		<link rel="stylesheet" type="text/css" href="/style.css?v=1" />
 		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 		<link rel="icon" href="/favicon.ico" type="image/x-icon">
 		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
