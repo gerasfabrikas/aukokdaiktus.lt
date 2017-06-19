@@ -52,7 +52,7 @@ if($page_slug == 'kontaktai' or $page_slug == 'tapkg' or $page_slug == 'gauk' or
 	if(isset($_POST['code']) and (strtoupper($_POST["code"]) == $_SESSION['captcha'])) :
 		if(isset($_POST['name']) and isset($_POST['elp']) and isset($_POST['desc']) and isset($_POST['phone'])) :
 			if($_POST['name'] != '' and filter_var($_POST['elp'], FILTER_VALIDATE_EMAIL) and $_POST['desc'] != '' and $_POST['phone'] != '') :
-				if(myMail('info@aukokdaiktus.lt', $_POST['name'].' ('.$_POST['phone'].', '.$_POST['elp'].') ('.$citiesList[$_POST['sav']].') nori '.$_POST['nor'], $_POST['desc'], $from = $_POST['elp']))
+				if(sendEmailMessageToManagersOfCity($_POST['sav'], $_POST['name'].' ('.$_POST['phone'].', '.$_POST['elp'].') ('.$citiesList[$_POST['sav']].') nori '.$_POST['nor'], $_POST['desc'], $from = $_POST['elp'], array('info@aukokdaiktus.lt')))
 				err('Jūsų žinutė išsiųsta', 'green');
 				else err('Klaida siunčiant žinutę', 'red');
 			else : $error=1; err('Užpildykite visus laukelius', 'red');
@@ -74,7 +74,7 @@ if($page_slug == 'kontaktai' or $page_slug == 'tapkg' or $page_slug == 'gauk' or
 		<label>Telefonas<span class="reqfield">*</span></label><input type="text" name="phone" value="" maxlength="15" /><br />
 		<label>El. paštas<span class="reqfield">*</span></label><input type="text" name="elp" value="" /><br />
 		<label>Žinutė<span class="reqfield">*</span></label><textarea name="desc"><?php if(isset($_POST['desc']) and isset($error)): echo $_POST['desc'];  endif; ?></textarea><br />
-		<label></label><img class="cap" src="tools/showCaptcha.php" /><br>
+		<label></label><img class="cap" src="tools/showCaptcha.php?v=<?php echo uniqid() ?>" /><br>
 		<label>Įveskite tekstą, kurį matote paveikslėlyje<span class="reqfield">*</span></label><input type="text" name="code" value="" /><br />
 		<label></label><input type="submit" value="Siųsti" />		
 	</form>
