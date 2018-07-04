@@ -8,7 +8,7 @@
 define("CHARSET", "UTF-8");
 define("ROOT_PATH", __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR);
 if(isset($_SERVER['APP_ENV']) && (strtolower($_SERVER['APP_ENV']) == 'dev')) {
-    define("ROOT_URL", "http://www.aukokdaiktus.dev/");
+    define("ROOT_URL", "http://www.aukokdaiktus.test:8080/");
 } else {
     define("ROOT_URL", "http://www.aukokdaiktus.lt/");
 }
@@ -22,7 +22,7 @@ if(isset($_SERVER['APP_ENV']) && (strtolower($_SERVER['APP_ENV']) == 'dev')) {
  * If you want to know why we use "define" instead of "const" @see http://stackoverflow.com/q/2447791/1114320
  */
 /** database host, usually it's "127.0.0.1" or "localhost", some servers also need port info, like "127.0.0.1:8080" */
-define("DB_HOST", "localhost");
+define("DB_HOST", "mysql");
 /** name of the database. please note: database and database table are not the same thing! */
 define("DB_NAME", "pdarbais");
 /** user for your database. the user needs to have rights for SELECT, UPDATE, DELETE and INSERT.

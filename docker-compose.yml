@@ -1,0 +1,26 @@
+version: "3"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: .docker/Dockerfile
+    environment:
+      APP_ENV: 'dev'
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/aukok/aukokdaiktus.lt
+      - .docker/nginx:/etc/nginx/
+      - .docker/php5:/etc/php5/
+    tty: true
+  mysql:
+    image: mysql:5.6.32
+    volumes:
+      - .docker/mysql:/etc/mysql/
+    ports:
+      - "13306:3306"
+    environment:
+      MYSQL_DATABASE: pdarbais
+      MYSQL_ROOT_PASSWORD: pdarbais
+      MYSQL_USER: pdarbais
+      MYSQL_PASSWORD: pdarbais
