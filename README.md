@@ -26,6 +26,10 @@ Aukokdaiktus.lt – visiems Lietuvos žmonėms atviras tinklas, kuris jungia gal
         - `mysql -P 3306 -u pdarbais -ppdarbais -h localhost pdarbais < pdarbais_backup.sql`
         - `exit`
 - Open the web: [http://www.aukokdaiktus.test:8080/](http://www.aukokdaiktus.test:8080/)
+- Open the [MailHog](https://github.com/mailhog/MailHog) (mail catcher) local interface: [http://www.aukokdaiktus.test:18025/](http://www.aukokdaiktus.test:18025/)
+    - Send emails to mailcatcher:1025 if within containers
+    - Send emails to aukokdaiktus.test:11025 if outside containers (from the host) (this one is not tested yet, may require adjusting hosts file of the host system)
+
 
 # Use it later (starting working on the project)
 - `cd` to the project dir (the dir with this `README.md`)

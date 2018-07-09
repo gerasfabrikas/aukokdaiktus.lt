@@ -70,15 +70,15 @@ define('COOKIE_SECRET_KEY', 'pdarbais'); // use to salt cookie content and when 
  * It's really recommended to use SMTP!
  * 
  */
-define("EMAIL_USE_SMTP", false);
-define("EMAIL_SMTP_HOST", 'yourhost');
-define("EMAIL_SMTP_AUTH", true); // leave this true until your SMTP can be used without login
-define("EMAIL_SMTP_USERNAME", 'yourusername');
-define("EMAIL_SMTP_PASSWORD", 'yourpassword');
-define("EMAIL_SMTP_PORT", 465);
-define("EMAIL_SMTP_ENCRYPTION", 'ssl');
-define("EMAIL_DEFAULT_FROM", 'noreply@aukokdaiktus.lt');
-define("EMAIL_DEFAULT_TO", 'info@aukokdaiktus.lt');
+define("EMAIL_USE_SMTP", true);
+define("EMAIL_SMTP_HOST", 'mailcatcher');
+define("EMAIL_SMTP_AUTH", false); // leave this true until your SMTP can be used without login
+define("EMAIL_SMTP_USERNAME", '');
+define("EMAIL_SMTP_PASSWORD", '');
+define("EMAIL_SMTP_PORT", 1025);
+define("EMAIL_SMTP_ENCRYPTION", '');
+define("EMAIL_DEFAULT_FROM", 'noreply@aukokdaiktus.test');
+define("EMAIL_DEFAULT_TO", 'info@aukokdaiktus.test');
 
 /**
  * Configuration file for: password reset email data

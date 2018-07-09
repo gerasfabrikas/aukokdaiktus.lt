@@ -1,5 +1,10 @@
 version: "3"
 services:
+  mailcatcher:
+    image: mailhog/mailhog
+    ports:
+      - "11025:1025"
+      - "18025:8025"
   app:
     build:
       context: .
