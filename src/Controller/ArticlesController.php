@@ -4,9 +4,10 @@ namespace App\Controller;
 
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 
-class ArticlesController
+class ArticlesController extends AbstractController
 {
     /**
      * @Route("/naujienos")
@@ -21,8 +22,16 @@ class ArticlesController
      */
     public function show(string $slug)
     {
-        return new Response(sprintf("One article page: %s",
-            $slug
-        ));
+        $comments = [
+            'Random comment #1',
+            'Random comment #2',
+            'Random comment #3',
+        ];
+
+
+        return $this->render('article/show.html.twig', [
+            'title' => ucwords(str_replace('-', ' ', $slug)),
+            'comments' => $comments,
+        ]);
     }
 }
