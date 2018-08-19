@@ -83,124 +83,128 @@
     </div>
 </div>
 
-<div class="header daiktais">
-    <a href="/">
-        <div class="left">
-        </div>
-    </a>
-    <div class="right">
+<div class="header daiktais"><a href="/"><div class="left"></div></a><!--
+  --><div class="right">
         <div class="inline auth">
+            {% block auth %}
 
-            <?php if (isset($login) and $login->isUserLoggedIn() == true) : ?>
-            <div class="inline valign-mid">
-                <a title="Paskyros nustatymai" href="/?p=edit">
-                    <?php echo $_SESSION['user_name']; ?>
-                    <div class="inline valign-mid gravatar">
-                        <?php echo (strlen($usermeta['user_thumb']) > 16 ? '<img src="'.$usermeta['user_thumb'].'"
-                                                                                 onError="this.style.visibility=\'hidden\'"/>'
-                        : ''); ?>
-                    </div>
-                </a>
-                <a title="Atsijungti" href="/index.php?logout"><i class="fa fa-sign-out"></i></a>
-            </div>
-            <?php else : ?>
-            <a class="openModal" href="#openModal">Prisijungti</a>
-            <?php endif; ?>
-
+                {#<?php if (isset($login) and $login->isUserLoggedIn() == true) : ?>#}
+                {#<div class="inline valign-mid">#}
+                {#<a title="Paskyros nustatymai" href="/?p=edit">#}
+                {#<?php echo $_SESSION['user_name']; ?>#}
+                {#<div class="inline valign-mid gravatar">#}
+                {#<?php echo (strlen($usermeta['user_thumb']) > 16 ? '<img src="'.$usermeta['user_thumb'].'"#}
+                {#onError="this.style.visibility=\'hidden\'"/>'#}
+                {#: ''); ?>#}
+                {#</div>#}
+                {#</a>#}
+                {#<a title="Atsijungti" href="/index.php?logout"><i class="fa fa-sign-out"></i></a>#}
+                {#</div>#}
+                {#<?php else : ?>#}
+                <a class="openModal" href="#openModal">Prisijungti</a>
+                {#<?php endif; ?>#}
+            {% endblock %}
         </div>
         <br>
         <ul class="inline pgmenu">
-            <?php $pgmenu = array(
-					'apie' => 'Apie',
-            'padek' => 'Prisidėk',
-            'gauk' => 'Gauk pagalbos',
-            'regionuose' => 'Mes regionuose',
-            'duk' => 'DUK',
-            'kontaktai' => 'Kontaktai',
-            );
-            $submenu = array(
-            'apie' => array('apie' => 'Apie projektą', 'apieorg' => 'Apie organizaciją', 'rezultatai' => 'Rezultatai'),
-            'padek' => array('padek' => 'Padėk kitiems', 'tapk' => 'Tapk komandos nariu'),
-            'gauk' => array('gauk' => 'Pagalbos gavėjai', 'tapkg' => 'Tapk pagalbos gavėju'),
-            );
+            {#<?php $pgmenu = array(#}
+            {#'apie' => 'Apie',#}
+            {#'padek' => 'Prisidėk',#}
+            {#'gauk' => 'Gauk pagalbos',#}
+            {#'regionuose' => 'Mes regionuose',#}
+            {#'duk' => 'DUK',#}
+            {#'kontaktai' => 'Kontaktai',#}
+            {#);#}
+            {#$submenu = array(#}
+            {#'apie' => array('apie' => 'Apie projektą', 'apieorg' => 'Apie organizaciją', 'rezultatai' => 'Rezultatai'),#}
+            {#'padek' => array('padek' => 'Padėk kitiems', 'tapk' => 'Tapk komandos nariu'),#}
+            {#'gauk' => array('gauk' => 'Pagalbos gavėjai', 'tapkg' => 'Tapk pagalbos gavėju'),#}
+            {#);#}
 
-            if( isset($_GET['pageslug']) and array_key_exists($_GET['pageslug'], $submenu['apie']) ) $father = 'apie';
-            elseif( isset($_GET['pageslug']) and array_key_exists($_GET['pageslug'], $submenu['padek']) ) $father =
-            'padek';
-            elseif( isset($_GET['pageslug']) and array_key_exists($_GET['pageslug'], $submenu['gauk']) ) $father =
-            'gauk';
-            elseif(isset($_GET['pageslug'])) $father = $_GET['pageslug'];
-            else $father = '';
+            {#if( isset($_GET['pageslug']) and array_key_exists($_GET['pageslug'], $submenu['apie']) ) $father = 'apie';#}
+            {#elseif( isset($_GET['pageslug']) and array_key_exists($_GET['pageslug'], $submenu['padek']) ) $father =#}
+            {#'padek';#}
+            {#elseif( isset($_GET['pageslug']) and array_key_exists($_GET['pageslug'], $submenu['gauk']) ) $father =#}
+            {#'gauk';#}
+            {#elseif(isset($_GET['pageslug'])) $father = $_GET['pageslug'];#}
+            {#else $father = '';#}
 
-            foreach($pgmenu as $pgkey => $pgitem) echo '
-            <li><a '.( ((isset($_GET['p']) and isset($_GET['pageslug']) and $_GET['p'] == 'puslapis' and $father ==
-                $pgkey) ) ? 'class="current"' : '' ).' href="/'.$pgkey.'">'.$pgitem.'</a></li>
-            ';
-            ?>
+            {#foreach($pgmenu as $pgkey => $pgitem) echo '#}
+            {#<li><a '.( ((isset($_GET['p']) and isset($_GET['pageslug']) and $_GET['p'] == 'puslapis' and $father ==#}
+            {#$pgkey) ) ? 'class="current"' : '' ).' href="/'.$pgkey.'">'.$pgitem.'</a></li>#}
+            {#';#}
+            {#?>#}
+            <li><a href="/apie">Apie</a></li>
+            <li><a href="/padek">Prisidėk</a></li>
+            <li><a href="/gauk">Gauk pagalbos</a></li>
+            <li><a href="/regionuose">Mes regionuose</a></li>
+            <li><a href="/duk">DUK</a></li>
+            <li><a href="/kontaktai">Kontaktai</a></li>
         </ul>
         <br>&nbsp;
     </div>
 </div>
 
-<?php if(isset($_GET['pageslug']) and $_GET['pageslug'] != '' and isset($pgmenu[$father])) : ?>
-<div class="pagebanner daiktais">
-    <div class="social">
-        <a class="fb" target="_blank" href="https://www.facebook.com/aukoktinklas/"><i class="fa fa-facebook"></i></a>
-        <a class="tw" target="_blank" href="http://www.linkedin.com/company/pagalbadaiktais-lt"><i
-                    class="fa fa-linkedin"></i></a>
-    </div>
-    <div class="pgtitles">
-        <img src="/img/k<?php echo $father; ?>.png" alt="pglogo"/>
-        <h2><?php echo $pgmenu[$father]; ?></h2>
-    </div>
-    <div class="submenu">
-        <?php
-		if( array_key_exists($_GET['pageslug'], $submenu['apie'])
-			or array_key_exists($_GET['pageslug'], $submenu['padek'])
-			or array_key_exists($_GET['pageslug'], $submenu['gauk'])
-		) :
-			echo '<ul>';
-        foreach($submenu[$father] as $menukey => $menuitem) :
-        echo '
-        <li
-        '.($menukey == $_GET['pageslug'] ? ' class="current"' : '').'><a href="/'.$menukey.'">'.$menuitem.'</a></li>';
-        endforeach;
-        echo '</ul>';
-        endif;
-        ?>
-    </div>
-</div>
-<?php elseif(isset($_GET['p']) and ($_GET['p'] == 'kuratorius' or $_GET['p'] == 'stokojantysis' or $_GET['p'] == 'tinklo-atstovas' or $_GET['p'] == 'poreikiai' or $_GET['p'] == 'edit') ) :
-	$fumenu = array('kuratorius' => 'Kuratoriai', 'stokojantysis' => 'Paramos gavėjai', 'tinklo-atstovas' => 'Tinklo
-atstovai', 'poreikiai' => 'Poreikiai', 'edit' => 'Mano paskyra');
-?>
+{#<?php if(isset($_GET['pageslug']) and $_GET['pageslug'] != '' and isset($pgmenu[$father])) : ?>#}
+{#<div class="pagebanner daiktais">#}
+{#<div class="social">#}
+{#<a class="fb" target="_blank" href="https://www.facebook.com/aukoktinklas/"><i class="fa fa-facebook"></i></a>#}
+{#<a class="tw" target="_blank" href="http://www.linkedin.com/company/pagalbadaiktais-lt"><i#}
+{#class="fa fa-linkedin"></i></a>#}
+{#</div>#}
+{#<div class="pgtitles">#}
+{#<img src="/img/k<?php echo $father; ?>.png" alt="pglogo"/>#}
+{#<h2><?php echo $pgmenu[$father]; ?></h2>#}
+{#</div>#}
+{#<div class="submenu">#}
+{#<?php#}
+{#if( array_key_exists($_GET['pageslug'], $submenu['apie'])#}
+{#or array_key_exists($_GET['pageslug'], $submenu['padek'])#}
+{#or array_key_exists($_GET['pageslug'], $submenu['gauk'])#}
+{#) :#}
+{#echo '<ul>';#}
+{#foreach($submenu[$father] as $menukey => $menuitem) :#}
+{#echo '#}
+{#<li#}
+{#'.($menukey == $_GET['pageslug'] ? ' class="current"' : '').'><a href="/'.$menukey.'">'.$menuitem.'</a></li>';#}
+{#endforeach;#}
+{#echo '</ul>';#}
+{#endif;#}
+{#?>#}
+{#</div>#}
+{#</div>#}
+{#<?php elseif(isset($_GET['p']) and ($_GET['p'] == 'kuratorius' or $_GET['p'] == 'stokojantysis' or $_GET['p'] == 'tinklo-atstovas' or $_GET['p'] == 'poreikiai' or $_GET['p'] == 'edit') ) :#}
+{#$fumenu = array('kuratorius' => 'Kuratoriai', 'stokojantysis' => 'Paramos gavėjai', 'tinklo-atstovas' => 'Tinklo#}
+{#atstovai', 'poreikiai' => 'Poreikiai', 'edit' => 'Mano paskyra');#}
+{#?>#}
 
-<div class="pagebanner daiktais">
-    <div class="social">
-        <a class="fb" target="_blank" href="https://www.facebook.com/aukoktinklas/"><i class="fa fa-facebook"></i></a>
-        <a class="tw" target="_blank" href="http://www.linkedin.com/company/pagalbadaiktais-lt"><i
-                    class="fa fa-linkedin"></i></a>
-    </div>
-    <div class="pgtitles">
-        <img src="/img/fu1_<?php echo $_GET['p']; ?>.png" alt="pglogo"/>
-        <h2><?php echo $fumenu[$_GET['p']]; ?></h2>
-    </div>
-</div>
-<?php else : ?>
-<div class="banner daiktais" style="background-image: url('/img/head2.jpg');">
+{#<div class="pagebanner daiktais">#}
+{#<div class="social">#}
+{#<a class="fb" target="_blank" href="https://www.facebook.com/aukoktinklas/"><i class="fa fa-facebook"></i></a>#}
+{#<a class="tw" target="_blank" href="http://www.linkedin.com/company/pagalbadaiktais-lt"><i#}
+{#class="fa fa-linkedin"></i></a>#}
+{#</div>#}
+{#<div class="pgtitles">#}
+{#<img src="/img/fu1_<?php echo $_GET['p']; ?>.png" alt="pglogo"/>#}
+{#<h2><?php echo $fumenu[$_GET['p']]; ?></h2>#}
+{#</div>#}
+{#</div>#}
+{#<?php else : ?>#}
+<div class="banner daiktais" style="background-image: url('{{ asset('img/head2.jpg') }}');">
     <div class="social">
         <a class="fb" target="_blank" href="https://www.facebook.com/aukoktinklas/"><i class="fa fa-facebook"></i></a>
         <a class="tw" target="_blank" href="http://www.linkedin.com/company/pagalbadaiktais-lt"><i
                     class="fa fa-linkedin"></i></a>
     </div>
     <div class="counter">Nuo portalo veiklos pradžios padovanota <span
-                class="cnumber"><?php echo countData('needs', 'need_full = 1 AND need_type = 2 AND deleted = 0'); ?></span>
+                class="cnumber">{{ needsFulfilledCount }}</span>
         daiktų
     </div>
 </div>
-<?php endif; ?>
+{#<?php endif; ?>#}
 
-<div class="site daiktais<?php if( (isset($_GET['pageslug']) and $_GET['pageslug'] != '') or (isset($_GET['p']) and in_array($_GET['p'], array('kuratorius', 'tinklo-atstovas', 'stokojantysis', 'poreikiai', 'edit')) ) ) echo ' pagetemp'; ?>">
+{#<div class="site daiktais<?php if( (isset($_GET['pageslug']) and $_GET['pageslug'] != '') or (isset($_GET['p']) and in_array($_GET['p'], array('kuratorius', 'tinklo-atstovas', 'stokojantysis', 'poreikiai', 'edit')) ) ) echo ' pagetemp'; ?>">#}
+<div class="site daiktais">
     <!-- End of Header -->
 
     <!-- Footer -->
@@ -210,7 +214,7 @@ atstovai', 'poreikiai' => 'Poreikiai', 'edit' => 'Mano paskyra');
 <div class="footer">
     <div class="wrap">
         <div class="left inline">
-            <?php echo getField('settings', 'set_val', 'set_id', '2'); ?>
+            {#<?php echo getField('settings', 'set_val', 'set_id', '2'); ?>#}
         </div>
         <div class="right inline">
             <a href="/apie">Apie mus</a> | <a href="/kontaktai">Kontaktai</a> | <a href="/taisykles">Taisyklės</a>
@@ -220,12 +224,12 @@ atstovai', 'poreikiai' => 'Poreikiai', 'edit' => 'Mano paskyra');
 
 
 {% block javascripts %}
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/i18n/jquery-ui-i18n.min.js"></script>
-    <script src="/chosen.jquery.min.js"></script>
-    <script src="/clamp.min.js"></script>
-    <script src="/script.js"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui-i18n.min.js') }}"></script>
+    <script src="{{ asset('js/chosen.jquery.min.js') }}"></script>
+    <script src="{{ asset('js/clamp.min.js') }}"></script>
+    <script src="{{ asset('js/script.js') }}"></script>
 {% endblock %}
 
 </body>
