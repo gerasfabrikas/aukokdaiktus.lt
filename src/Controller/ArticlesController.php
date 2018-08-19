@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 
+use Psr\Log\LoggerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,9 +19,9 @@ class ArticlesController extends AbstractController
     }
 
     /**
-     * @Route("/naujienos/{slug}")
+     * @Route("/naujienos/{slug}", name="article_show")
      */
-    public function show(string $slug)
+    public function show(string $slug, LoggerInterface $logger)
     {
         $comments = [
             'Random comment #1',
@@ -28,6 +29,7 @@ class ArticlesController extends AbstractController
             'Random comment #3',
         ];
 
+        $logger->info(sprintf("Just testing: %s", $slug));
 
         return $this->render('article/show.html.twig', [
             'title' => ucwords(str_replace('-', ' ', $slug)),

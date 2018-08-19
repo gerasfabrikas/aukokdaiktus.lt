@@ -10,11 +10,11 @@ use Symfony\Component\HttpFoundation\Response;
 class HomeController extends AbstractController
 {
     /**
-     * @Route("/")
+     * @Route("/", name="app_homepage")
      * @throws \InvalidArgumentException
      */
     public function homepage()
     {
-        return new Response('It works!');
+        return $this->render('base.html.twig');
     }
 }
